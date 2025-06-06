@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
     "scripts": {
-        "b": "pnpm --filter @app/backend",
-        "f": "pnpm --filter @app/frontend",
+        "b": "pnpm --filter backend",
+        "f": "pnpm --filter frontend",
         "dev": "pnpm run --parallel --filter \"{frontend}\" --filter \"{backend}\" dev"
     },
   "keywords": [],
