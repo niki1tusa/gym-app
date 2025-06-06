@@ -1,0 +1,15 @@
+{
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "useTabs": true,
+    "semi": true,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "arrowParens": "avoid",
+    "experimentalTernaries": true,
+    "printWidth": 80,
+    "bracketSpacing": true,
+    "importOrder": ["<THID_PARTY_MODULES>", "/routes/", "/middleware/", "^../(.*)", "^./(.*)"],
+    "importOrderSeparation": true,
+    "importOrderSortSpecifiers": true
+}

@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "scripts": {
+        "b": "pnpm --filter @app/backend",
+        "f": "pnpm --filter @app/frontend",
+        "dev": "pnpm run --parallel --filter \"{frontend}\" --filter \"{backend}\" dev"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
