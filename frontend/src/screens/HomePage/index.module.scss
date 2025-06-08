@@ -1,0 +1,13 @@
+@use '../../assets/styles/variables.scss' as var;
+
+
+.heading{
+    margin: 38px auto;
+    text-align: center;
+    font-size: 32px;
+    color: var.$white;
+    line-height: 1.5;
+    @media(max-width: var.$mobile){
+        font-size: 26px;
+    }
+}

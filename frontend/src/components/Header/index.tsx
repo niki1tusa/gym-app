@@ -14,7 +14,7 @@ export const Header = ({backLink = '/'}) => {
     <header className={styles.header}>
 {pathname !== '/'?    <button onClick={()=>navigate(backLink)}>
       <RiArrowLeftSLine color='white' size={30}/>
-    </button>:  <button onClick={()=>navigate('/profile')}><CgProfile color='white' size={30}/></button>}
+    </button>:  <button onClick={()=>navigate(isAuth?'/profile': '/auth')}><CgProfile color='white' size={30}/></button>}
       
 		<Hamburger/>
     </header>

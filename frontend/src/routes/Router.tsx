@@ -2,12 +2,13 @@ import { useAuth } from '../hooks/useAuth';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { routes } from './routes.data';
 import { NotFoundPage } from '../screens/NotFoundPage';
-import { AuthPage } from '../screens/AuthPage';
+import { AppContext } from '../context';
 
 export const Router = () => {
 	const { isAuth } = useAuth();
 	return (
-		<BrowserRouter>
+		<AppContext.Provider value=''>
+					<BrowserRouter>
 			<Routes>
 				{routes.map(route => {
 					if (route.auth && !isAuth) {
@@ -24,5 +25,7 @@ export const Router = () => {
 				<Route path='*' element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>
+		</AppContext.Provider>
+
 	);
 };
