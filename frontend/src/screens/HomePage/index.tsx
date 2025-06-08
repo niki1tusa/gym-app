@@ -1,8 +1,7 @@
 // import { BrowserRouter, Routes, Route } from "react-router";
-import { Layout } from "./components/Layout";
-import { Header } from "./components/Header";
-import './assets/styles/index.scss'
-function App() {
+import { Layout } from "../../components/Layout";
+
+export const HomePage = () =>  {
 
   return (
     // <BrowserRouter>
@@ -11,9 +10,8 @@ function App() {
     //     </Routes>
     // </BrowserRouter>
     <Layout>
-      <Header/>
+
     </Layout>
   )
 }
 
-export default App

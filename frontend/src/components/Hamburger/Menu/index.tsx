@@ -1,6 +1,7 @@
 import { menu } from '../menu.data';
 import styles from '../index.module.scss';
 import cn from 'clsx';
+import { Link } from 'react-router';
 
 export const Menu = ({ isShow }) => {
 	return (
@@ -11,11 +12,13 @@ export const Menu = ({ isShow }) => {
 		>
 			<ul>
 				{menu.map((item, i) => (
-					<li key={`${i}-${item.title}`}>{item.title}</li>
+					<Link to={item.link} key={`${i}-${item.title}`}>
+						<li>{item.title}</li>
+					</Link>
 				))}
-                <li>
-                    <button onClick={()=>{}}>Logout</button>
-                </li>
+				<li>
+					<button onClick={() => {}}>Logout</button>
+				</li>
 			</ul>
 		</nav>
 	);
