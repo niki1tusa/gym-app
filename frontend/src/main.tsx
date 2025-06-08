@@ -1,11 +1,21 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './assets/styles/index.scss'
-import { Router } from './routes/Router'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './assets/styles/index.scss';
+import { Router } from './routes/Router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false
+		}
+	}
+});
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-<Router/>
-  </StrictMode>,
-)
+	<StrictMode>
+		<QueryClientProvider client={queryClient}>
+			<Router />
+		</QueryClientProvider>
+	</StrictMode>
+);

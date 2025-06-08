@@ -4,6 +4,8 @@ import { routes } from './routes.data';
 import { NotFoundPage } from '../screens/NotFoundPage';
 import { AppContext } from '../context';
 
+
+
 export const Router = () => {
 	const { isAuth } = useAuth();
 	return (

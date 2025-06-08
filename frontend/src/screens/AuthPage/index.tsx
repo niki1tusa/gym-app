@@ -1,10 +1,12 @@
 import { Layout } from '../../components/Layout';
 import { Input } from '../../components/ui/Input';
-import { set, useForm, type SubmitHandler } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 import { Button } from '../../components/ui/Button';
 import { Loader } from '../../components/Loader';
 import styles from './index.module.scss';
 import { useState } from 'react';
+import {useMutation} from '@tanstack/react-query'
+import AuthService from '../../services/auth.service';
 interface FormInputType {
 	email: string;
 	password?: number;
@@ -12,14 +14,21 @@ interface FormInputType {
 const isLoading = true;
 const isLoadingAuth = true;
 export const AuthPage = () => {
-	const [type, setType] = useState('auth');
-	const {
-		register,
-		handleSubmit,
-		formState: { errors }
-	} = useForm<FormInputType>();
-	const onSubmit: SubmitHandler<FormInputType> = data => console.log(data);
-	console.log(errors?.email?.message);
+  const [type, setType] = useState('login');
+  
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormInputType>({mode: 'onChange'});
+
+  const { mutate, isPending} = useMutation({
+    mutationKey: ['auth'],
+    mutationFn: ({ email, password }: FormInputType) => 
+      AuthService.main(email, password, type),
+    onSuccess: (data) => console.log('success')
+  });
+  const onSubmit: SubmitHandler<FormInputType> = (data) => mutate(data);
 	return (
 		<>
 			<Layout
@@ -48,7 +57,7 @@ export const AuthPage = () => {
 						placeholder='Enter password'
 					/>
 					<div className={styles.wrapperButtons}>
-						<Button clickHandler={() => setType('auth')}>Sign In</Button>
+						<Button clickHandler={() => setType('login')}>Sign In</Button>
 						<Button clickHandler={() => setType('reg')}>Sign Up</Button>
 					</div>
 				</form>
