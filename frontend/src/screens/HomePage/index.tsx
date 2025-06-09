@@ -7,7 +7,7 @@ export const HomePage = () => {
 	const { isAuth } = useAuth();
 	const navigate = useNavigate();
 	return (
-		<Layout bgImage='../../../public/images/home-arnold-bg.jpg'>
+		<Layout bgImage='../../../images/home-arnold-bg.jpg'>
 			<Button clickHandler={() => navigate(isAuth ? '/new-workout' : '/auth')}>
 				{isAuth ? 'New' : 'SignIn'}
 			</Button>

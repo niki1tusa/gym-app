@@ -1,11 +1,11 @@
 import { env } from './app/lib/env';
-import express from 'express'
+import express from 'express';
 import cors from 'cors';
 import authRoute from './app/auth/auth.routes';
 import userRoute from './app/user/user.routes';
-import 'colors'
+import 'colors';
 import morgan from 'morgan';
-import { prisma } from './app/lib/ctx';
+import { createAppContext, prisma } from './app/lib/ctx';
 import { errorHandler, notFound } from './app/middleware/error.middleware';
 import exercisesRoute from './app/exercise/exercise.routes';
 import workoutRoute from './app/workout/workout.routes';
@@ -26,6 +26,7 @@ void (async () => {
 	app.use('/uploads', express.static(path.join(__dirname, '/uploads/')));
 
 	app.use('/api/auth', authRoute);
+
 	app.use('/api/users', userRoute);
 	app.use('/api/exercises', exercisesRoute);
 	app.use('/api/workouts', workoutRoute);
